@@ -1,37 +1,36 @@
 class BankAccount:
     
     def __init__(self,account_number,account_name,account_type,balance):
-        self.transactions = []
         self.account_number = account_number
         self.account_name = account_name
         self.account_type = account_type
         self.balance = balance
 
+        self.transactions_file = f"{self.account_name}.txt"
+
     def deposit(self,amount):
         self.balance += amount
-        self.add_transactions(self.account_name)
+
+        self.add_transactions(f"Deposied: {amount}\n")
    
     def add_transactions(self,message):
-        with open(f"{self.account_name}.txt", "a") as file:
+        with open(self.transactions_file, "a") as file:
             file.write(str(message))
 
     def withdraw(self, amount):
         if amount > self.balance:
             return "withdrawal limit reached"
         self.balance -= amount
-        self.add_transactions(self.account_name)
-        
-        
+        self.add_transactions(f"withdraw: {amount}\n")
+              
     def current_balance(self):
         return self.balance
     
     def transaction_history(self):
-        with open("second_file.txt", "r") as file2:
-            print(file2.readfile())
-            file2.flush()
-
-   
-  
+        with open(self.transactions_file, "r") as file2:
+            result = file2.read()
+            return result
+         
 def main():
         accounts = [] 
         while True:
@@ -46,12 +45,25 @@ def main():
 
             if response == 1:
                 account_name = input("name: ")
-                account_type = input("account type: ") 
+
+                print("select an account type")
+                print("1. savings")
+                print("2. current")
+                print("3. student")
+                print()
+                account_response = int(input(""))
+                if account_response == 1:
+                    account_type = "savings"
+                elif account_response == 2:
+                    account_type = "current"
+                elif account_response == 3:
+                    account_type = "student"
+
                 inital_deposit = int(input("deposit an amount: "))
                 account_number = 1223344455
                 bank = BankAccount(account_number,account_name,account_type,inital_deposit)
                 accounts.append(bank)
-                print("account created!")
+                print(f"account created! your account number is {account_number}")
 
             elif response == 2:
                 name = input("enter account name: ")
@@ -88,4 +100,7 @@ def main():
                 for account in accounts:
                     if name == account.account_name:
                         print(account.transaction_history())
+            else:
+                print("nothing")
+
 main()
