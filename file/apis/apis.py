@@ -1,17 +1,5 @@
 import requests
 
-response = requests.get("http://api.publicapis.org/entries")
-res = response.json()
-print()
-print("What are you looking for?")
-print("1. Link")
-print("2. Description")
-print("3. Category")
-print()
-number = int(input("Write a number: "))
-length = range(len(res["entries"]))
-na = []
-
 
 class State:
     def __init__(self, number):
@@ -29,13 +17,28 @@ class State:
         return self.value
 
 
-if number == 1:
+response = requests.get("http://api.publicapis.org/entries")
+res = response.json()
+print()
+print("What are you looking for?")
+print("1. Link")
+print("2. Description")
+print("3. Category")
+print()
+number = int(input("Write a number: "))
+length = range(len(res["entries"]))
+na = ""
+
+state = State(number)
+if number in [1, 2, 3]:
     name = input("Enter API name: ")
 
     for i in length:
-        query = res["entries"][int(i)]["API"]
+        query = res["entries"][i]["API"]
         if name == query:
-            na.append(res["entries"][int(i)]["Link"])
-
+            na = res["entries"][i][state.getValue()]
+            break  # Exit the loop since we found a match
+        else:
+            na = "Link does not exist"
 
 print(na)
