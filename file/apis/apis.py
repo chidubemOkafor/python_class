@@ -10,6 +10,8 @@ class State:
             self.value = "Description"
         elif self.number == 3:
             self.value = "Category"
+        elif self.number == 4:
+            self.value = "Auth"
         else:
             self.value = "API"
 
@@ -24,13 +26,14 @@ print("What are you looking for?")
 print("1. Link")
 print("2. Description")
 print("3. Category")
+print("4. auth")
 print()
 number = int(input("Write a number: "))
 length = range(len(res["entries"]))
 na = ""
 
 state = State(number)
-if number in [1, 2, 3]:
+if number in [1, 2, 3, 4]:
     name = input("Enter API name: ")
 
     for i in length:
