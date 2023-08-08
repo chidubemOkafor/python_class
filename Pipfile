@@ -5,6 +5,10 @@ name = "pypi"
 
 [packages]
 dotenv-python = "*"
+sqllite = "*"
+pipenv = "*"
+install = "*"
+mysql-connector-python = "*"
 
 [dev-packages]
 
