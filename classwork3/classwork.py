@@ -11,7 +11,7 @@ class DB:
         self._db = sql.connect(
             host="localhost",
             user="root",
-            password="DexterJonson12%",
+            password="",
             database="syudentmanagementsystem"
         )
         self.commit = self.db.commit()
@@ -117,9 +117,6 @@ class Customer:
         # I can identify the uniqueness with the customerID
         self.cursor.execute("SELECT customerID FROM ")
 
-
-class Order:
-    def __init__(self, order_ID, order_date, customer_ID, total_mount):
         self.order_ID = order_ID
         self.order_date = order_date
         self.customer_ID = customer_ID
@@ -168,6 +165,8 @@ class OrderItem:
 #     def __init__(sel:
 #     def __init__(sel:
 #     def __init__(sel:
-#     def __init__(self)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f):
+#     def __init__(sel:
+#     def __init__(sel:
+#     def __init__(self)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f):
 #     def __init__(self)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f)f):
 #     def __init__(self):
